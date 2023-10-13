@@ -78,11 +78,8 @@ class Portscan:
                 continue
 
     def udp_scan(self, target, port, timeout):
-        # print("udp scan on %s with ports %s" % (target, ports))
         port = int(port)
-        start_time = time()
-        pkt = sr1(IP(dst=target) / UDP(dport=port), timeout=timeout, verbose=0)
-        spent_time = round((time() - start_time) * 1000)
+        pkt = None
         counter = 0
         start_time = time()
         while not pkt and counter < 10:
